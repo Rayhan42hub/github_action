@@ -1,0 +1,18 @@
+name: Exercice Hello World
+
+# 1. Définir le trigger : se déclenche lors d'un push
+on: [push]
+
+jobs:
+  say-hello:
+    # 2. Créer un serveur qui tourne sur Ubuntu
+    runs-on: ubuntu-latest
+    
+    steps:
+      # 3. Réaliser le checkout (télécharger ton code sur le serveur)
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 4. Écrire "hello world"
+      - name: Affiche Hello World
+        run: echo "Hello world !"
