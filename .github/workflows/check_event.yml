@@ -1,22 +1,52 @@
-name: Check Event Type
+name: Check Event Type Advanced
 
-# 1. Définir les déclencheurs (push ET pull request)
+# Le workflow se déclenche sur les deux types d'événements
 on: [push, pull_request]
 
-# 2. Déclarer les variables d'environnement au top niveau
-env:
-  PUSH_MSG: "C'est un push !"
-  PR_MSG: "C'est une pull request !"
-
 jobs:
-  check-event:
+  # Job spécifique pour le Push
+  job_push:
     runs-on: ubuntu-latest
+    # N'exécute ce job que si c'est un push
+    if: github.event_name == 'push'
     steps:
-      - name: Affiche le type d'événement
-        # 3. Vérifie le contexte github.event_name
-        run: |
-          if [ "${{ github.event_name }}" == "push" ]; then
-            echo "$PUSH_MSG"
-          elif [ "${{ github.event_name }}" == "pull_request" ]; then
-            echo "$PR_MSG"
-          fi
+      - name: Print Push Message
+        run: echo "C'est un push !"
+
+  # Job spécifique pour la Pull Request
+  job_pr:
+    runs-on: ubuntu-latest
+    # N'exécute ce job que si c'est une pull request
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Print PR Message
+        run: echo "C'est une pull request !"
+
+
+
+
+
+
+
+#name: Check Event Type
+
+# 1. Définir les déclencheurs (push ET pull request)
+#on: [push, pull_request]
+
+# 2. Déclarer les variables d'environnement au top niveau
+#env:
+#  PUSH_MSG: "C'est un push !"
+#  PR_MSG: "C'est une pull request !"
+
+#jobs:
+#  check-event:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Affiche le type d'événement
+#        # 3. Vérifie le contexte github.event_name
+#        run: |
+#          if [ "${{ github.event_name }}" == "push" ]; then
+#            echo "$PUSH_MSG"
+#          elif [ "${{ github.event_name }}" == "pull_request" ]; then
+#            echo "$PR_MSG"
+#          fi
