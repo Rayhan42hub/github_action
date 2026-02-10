@@ -7,8 +7,8 @@ jobs:
   # Job spécifique pour le Push
   job_push:
     runs-on: ubuntu-latest
-    # N'exécute ce job que si c'est un push
-    if: github.event_name == 'push'
+    # N'exécute ce job que si c'est un push (syntaxe recommandée)
+    if: ${{ github.event_name == 'push' }}
     steps:
       - name: Print Push Message
         run: echo "C'est un push !"
@@ -16,14 +16,11 @@ jobs:
   # Job spécifique pour la Pull Request
   job_pr:
     runs-on: ubuntu-latest
-    # N'exécute ce job que si c'est une pull request
-    if: github.event_name == 'pull_request'
+    # N'exécute ce job que si c'est une pull request (syntaxe recommandée)
+    if: ${{ github.event_name == 'pull_request' }}
     steps:
       - name: Print PR Message
         run: echo "C'est une pull request !"
-
-
-
 
 
 
