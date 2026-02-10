@@ -1,0 +1,13 @@
+name: Vérification de Fusion de PR
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  check_merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Afficher message si fusionnée
+        if: ${{github.event.pull_request.merged == true}}
+        run: echo "La PR a été mergée"

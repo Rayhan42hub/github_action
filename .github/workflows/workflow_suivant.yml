@@ -1,0 +1,13 @@
+name: workflow suivant
+
+on: 
+  workflow_run:
+    workflows: ["Vérification de Fusion de PR"]
+    types: [completed]
+      
+jobs:
+  message_suivant:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Afficher message de confirmation
+        run: echo "Le workflow précédent est terminé"
