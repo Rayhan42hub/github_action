@@ -1,0 +1,22 @@
+name: Check Event Type
+
+# 1. Définir les déclencheurs (push ET pull request)
+on: [push, pull_request]
+
+# 2. Déclarer les variables d'environnement au top niveau
+env:
+  PUSH_MSG: "C'est un push !"
+  PR_MSG: "C'est une pull request !"
+
+jobs:
+  check-event:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Affiche le type d'événement
+        # 3. Vérifie le contexte github.event_name
+        run: |
+          if [ "${{ github.event_name }}" == "push" ]; then
+            echo "$PUSH_MSG"
+          elif [ "${{ github.event_name }}" == "pull_request" ]; then
+            echo "$PR_MSG"
+          fi
