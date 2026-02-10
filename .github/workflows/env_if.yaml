@@ -2,7 +2,7 @@ name: Hello Rayhan
 on: workflow_dispatch
 
 env:
-  NAME: Rayhan
+  NAME: Ridoy
 
 jobs:
   say_hello: 
