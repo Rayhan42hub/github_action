@@ -1,0 +1,31 @@
+name: Amnesia
+
+# Correction 1: Orthographe de workflow_dispatch
+on: workflow_dispatch
+
+env:
+  NAME: Rayhan
+
+jobs:
+  # Correction 2: Indentation et nom de job valide
+  say_hello:                
+    runs-on: ubuntu-latest
+    env:  
+      ENTREPRISE: Docaposte
+    steps:
+      - name: "Dit bonjour"
+        # Correction 3: Suppression de l'espace inutile avant run
+        run: echo "Salut $NAME ! Tu travailles chez $ENTREPRISE ? Alors bon $DAY à toi !"                
+        env:
+          DAY: mardi
+      
+      # Correction 4: Indentation correcte de l'étape
+      - name: "Mardi ?"                
+        run: echo "Quel jour sommes nous ? $DAY ?"
+        
+  # Correction 5: Indentation et nom de job valide (pas d'espace)
+  say_goodbye:                
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Dit au revoir"
+        run: echo "Au revoir $NAME ! Tu travailles pour quelle entreprise ? $ENTREPRISE ?"
