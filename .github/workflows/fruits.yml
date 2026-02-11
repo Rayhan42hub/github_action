@@ -1,0 +1,21 @@
+name: Matrix Fruits
+
+
+on:
+  workflow_dispatch:
+
+jobs:
+  fruits-et-noms:
+    runs-on: ubuntu-latest
+    
+    # 2. Définition de la stratégie de matrice
+    strategy:
+      # 3. Arrêt immédiat si un job échoue
+      fail-fast: true
+      matrix:
+        fruit: [pomme, banane, fraise, kiwi]
+        nom: [Michel, Sarah, Kevin]
+
+    steps:
+      - name: Afficher la phrase combinée
+        run: echo "${{ matrix.nom }} mange une ${{ matrix.fruit }}, et il adore ça !"
