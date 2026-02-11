@@ -2,7 +2,7 @@ name: workflow suivant
 
 on: 
   workflow_run:
-    workflows: ["Vérification de Fusion de PR"]
+    workflows: ["Vérification de Fusion de PR"] #-> c'est le nom de mon workflow précédent 
     types: [completed]
       
 jobs:
